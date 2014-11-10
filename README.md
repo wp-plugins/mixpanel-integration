@@ -15,4 +15,3 @@ There are some variables that are necessary to make the plugin do it's thing.
 
 On every page in WordPress, you'll see an option panel for MixPanel Event Label. Whatever value you put in this label, will
 show up as an event in MixPanel.
-
