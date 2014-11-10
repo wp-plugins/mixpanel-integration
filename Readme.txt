@@ -1,5 +1,5 @@
 === MixPanel  ===
-Contributors: Jitta Raghavender Rao
+Contributors: jittarao
 Tags: analytics, metrics, funnels, mixpanel, kissmetrics
 Requires at least: 3.3
 Tested up to: 4.0
