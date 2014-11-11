@@ -25,10 +25,7 @@
 			self::no_mixpanel_token_found();
 			return false;
 		}
-		if($event_label == "")
-			$page_name = "document.title";
-		else
-			$page_name = $event_label;
+
 		echo "<script type='text/javascript'>
 		var rightNow = new Date();
 		var humanDate = rightNow.toDateString();
@@ -38,10 +35,13 @@
 			'first_wp_contact': humanDate
 		});
 		mixpanel.track(\"Viewed Page\", {
-			'Page Name':  Viewed $page_name,
-			'Page URL': window.location.pathname
+			'Page Name': ";
+		$event_label == "" ? $page_name = "document.title" : $page_name = "'$event_label'";
+		echo $page_name;
+		echo ", 'Page URL': window.location.pathname
 		});
 		</script>";
+
       return true;
     }
 
