@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/jittarao
 	Description: A relatively easy way to integrate MixPanel with your WordPress site
 	Author: Jitta Raghavender Rao
-	Version: 0.1
+	Version: 1.0
 	Author URI: https://twitter.com/jittarao
 	*/
 
