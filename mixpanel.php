@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/jittarao
 	Description: A relatively easy way to integrate MixPanel with your WordPress site
 	Author: Jitta Raghavender Rao
-	Version: 1.0
+	Version: 1.5
 	Author URI: https://twitter.com/jittarao
 	*/
 
@@ -17,41 +17,40 @@
 	namespace jittarao;
 
 	class mixPanel {
-		 public function __construct(){
-	        if(is_admin()){
+		public function __construct() {
+			if(is_admin()) {
 		    	add_action('admin_menu', array($this, 'add_settings_page'));
 		    	add_action('admin_init', array($this, 'mixpanel_init'));
 		    	require_once dirname( __FILE__ ) . '/meta-box.php';
-
 			} else {
 				require_once dirname( __FILE__ ) . '/page.php';
 			}
 	    }
 
-	     public function add_settings_page(){
+	     public function add_settings_page() {
 	        // This page will be under "Settings"
 			add_options_page('Mixpanel Options', 'Mixpanel Options', 'manage_options', 'mixpanel-admin', array($this, 'create_settings_page'));
 	    }
 
-		public function create_settings_page(){
-	?>
-		<div class="wrap">
-		    <?php screen_icon(); ?>
-		    <h2>Mixpanel Settings</h2>
-		    <?php settings_errors(  ) ?>
-		    <form method="post" action="options.php">
-		    <?php
-	            // This prints out all hidden setting fields
-			    settings_fields('mixpanel_settings_group');
-			    do_settings_sections('mixpanel_options');
-			?>
-		        <?php submit_button(); ?>
-		    </form>
-		</div>
-	<?php
+		public function create_settings_page() {
+?>
+			<div class="wrap">
+			    <?php screen_icon(); ?>
+			    <h2>Mixpanel Settings</h2>
+			    <?php settings_errors(  ) ?>
+			    <form method="post" action="options.php">
+			    <?php
+		            // This prints out all hidden setting fields
+				    settings_fields('mixpanel_settings_group');
+				    do_settings_sections('mixpanel_options');
+				?>
+			        <?php submit_button(); ?>
+			    </form>
+			</div>
+<?php
 	    }
 
-		public function print_section_info(){
+		public function print_section_info() {
 			print 'Enter your Mixpanel settings below:';
 	    }
 
@@ -66,7 +65,7 @@
 		    echo "<input type='text' name='$name' size='$size' value='$value' />";
 		}
 
-	    public function mixpanel_init(){
+	    public function mixpanel_init() {
 			register_setting('mixpanel_settings_group', 'mixpanel_settings'); # array($this, 'validate'));
 	      	$settings = (array) get_option( 'mixpanel_settings' );
 
@@ -110,7 +109,7 @@
 					)
 			);
 		}
-		public function validate( $input ) {
+		public function validate($input) {
 			$output = get_option( 'mixpanel_settings' );
 		    if ( ctype_alnum( $input['token_id'] ) ) {
 		        $output['token_id'] = $input['token_id'];

@@ -2,13 +2,14 @@
   add_action( 'admin_menu', 'mixpanel_create_meta_box' );
   add_action( 'save_post', 'mixpanel_update_event_label' );
 
-  function mixpanel_create_meta_box(){
-    if( function_exists('add_meta_box') ){
+  function mixpanel_create_meta_box() {
+    if( function_exists('add_meta_box')) {
       add_meta_box( 'mixpanel-event-label', 'MixPanel Event Label', 'mixpanel_event_box', 'page' );
+      add_meta_box( 'mixpanel-event-label', 'MixPanel Event Label', 'mixpanel_event_box', 'post' );
     }
   }
 
-  function mixpanel_event_box(){
+  function mixpanel_event_box() {
     global $post;
     $mixpanel_event_label = get_post_meta( $post->ID, 'mixpanel_event_label', true );
     ?>
@@ -21,7 +22,7 @@
     <?php
   }
 
-  function mixpanel_update_event_label( $post_id ){
+  function mixpanel_update_event_label($post_id) {
     if( isset($_POST['mixpanel_event_label']) ){
       update_post_meta( $post_id, 'mixpanel_event_label', $_POST['mixpanel_event_label'] );
     }
