@@ -3,7 +3,7 @@ Contributors: jittarao
 Tags: analytics, metrics, funnels, mixpanel, kissmetrics
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.5
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,12 @@ This is a plugin that allows you to get MixPanel analytics up and running on Wor
 == Description ==
 
 This plugin adds a meta box to the bottom of every page, which will allow you to mark the event of the page landing in MixPanel accordingly.
-You no longer need to add the mixpanel.track() javascript snippet in your theme files. 
+You no longer need to add the mixpanel.track() javascript snippet in your theme files.
+
+Updated to Version 1.5.1
+- Tracking code updated to latest version.
+- Now you can custom label posts too.
+- Event tracking code has been moved to wp_footer.php for speed improvements.
 
 == Installation ==  
 To install the plugin, either upload the .zip file using the plugin installer in your wp-admin, or
